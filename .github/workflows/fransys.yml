@@ -1,11 +1,11 @@
-name: Fransys CI for block 0196ab3d-7036-736f-9028-d9e88e1783e8 on master
+name: Fransys CI for block 0196ac4b-63ed-72a2-9380-de561339a7e5 on master
 
 on:
   push:
     branches: [ "master", "fransys_ci-master" ]
 
 env:
-  FRANSYS_REGISTRY: ${{ secrets.FRANSYS_REGISTRY_DOMAIN }}/${{ secrets.FRANSYS_REGISTRY_PROJECT }}/0196ab3d-7036-736f-9028-d9e88e1783e8
+  FRANSYS_REGISTRY: ${{ secrets.FRANSYS_REGISTRY_DOMAIN }}/${{ secrets.FRANSYS_REGISTRY_PROJECT }}/0196ac4b-63ed-72a2-9380-de561339a7e5
 
 jobs:
   build:
@@ -21,10 +21,10 @@ jobs:
       - name: Prepare variables
         id: prepare-vars
         run: |
-          if [[ -z "${{ vars.DOCKERFILE_PATH_APP_1 }}" ]]; then
+          if [[ -z "${{ vars.DOCKERFILE_PATH }}" ]]; then
             echo "DOCKERFILE_PATH=Dockerfile" >> $GITHUB_OUTPUT
           else
-            echo "DOCKERFILE_PATH=${{ vars.DOCKERFILE_PATH_APP_1 }}" >> $GITHUB_OUTPUT
+            echo "DOCKERFILE_PATH=${{ vars.DOCKERFILE_PATH }}" >> $GITHUB_OUTPUT
           fi
       - name: Build the Docker image
         run: docker buildx build --cache-from "$FRANSYS_REGISTRY:${{ github.sha }}" --cache-from "$FRANSYS_REGISTRY:${{ github.ref_name }}" -f ${{ steps.prepare-vars.outputs.DOCKERFILE_PATH }} --tag "$FRANSYS_REGISTRY:${{ github.sha }}" --progress=plain . 2>&1
