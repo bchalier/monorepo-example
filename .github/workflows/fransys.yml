@@ -1,11 +1,11 @@
-name: Fransys CI for block 0196ac4b-63ed-72a2-9380-de561339a7e5 on master
+name: Fransys CI for block 0196b51e-456a-726d-a898-10eb3b44bc1a on master
 
 on:
   push:
     branches: [ "master", "fransys_ci-master" ]
 
 env:
-  FRANSYS_REGISTRY: ${{ secrets.FRANSYS_REGISTRY_DOMAIN }}/${{ secrets.FRANSYS_REGISTRY_PROJECT }}/0196ac4b-63ed-72a2-9380-de561339a7e5
+  FRANSYS_REGISTRY: ${{ secrets.FRANSYS_REGISTRY_DOMAIN }}/${{ secrets.FRANSYS_REGISTRY_PROJECT }}/0196b51e-456a-726d-a898-10eb3b44bc1a
 
 jobs:
   build:
